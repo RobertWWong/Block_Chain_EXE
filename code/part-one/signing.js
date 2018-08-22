@@ -62,7 +62,6 @@ const sign = (privateKey, message) => {
  hash.update(message)
  const buff_msg = Buffer.from(hash.digest('hex'), 'hex');
  const result = secp256k1.sign(buff_msg, buff_private);
-
  return result['signature'].toString('hex');
 };
 
@@ -82,21 +81,12 @@ const verify = (publicKey, message, signature) => {
 	const hash = createHash('sha256');
     hash.update(message)
     const buff_msg = Buffer.from(hash.digest('hex'), 'hex');
-	
+
 	const buff_sign = Buffer.from(signature, 'hex')
 	const res = secp256k1.verify(buff_msg, buff_sign, buff_public);
 
 	return res;
 };
-
-// let pkey = createPrivateKey();
-// console.log(pkey);
-//
-// let test = randomBytes(32);
-//
-// const pubKey = getPublicKey(pkey);
-//
-// const signObj = sign(test, pkey);
 
 
 module.exports = {
