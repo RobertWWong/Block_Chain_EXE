@@ -91,7 +91,7 @@ describe('Signing module', function() {
     });
   });
 
-  describe.only('verify', function() {
+  describe('verify', function() {
     const message = randomString();
     let publicKey = null;
     let signature = null;

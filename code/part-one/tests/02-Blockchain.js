@@ -8,7 +8,7 @@ const { Transaction, Block, Blockchain } = require('../blockchain');
 
 describe('Blockchain module', function() {
 
-  describe('Transaction', function() {
+  describe.only('Transaction', function() {
     let signer = null;
     let recipient = null;
     let amount = null;
@@ -38,7 +38,7 @@ describe('Blockchain module', function() {
     });
   });
 
-  describe('Block', function() {
+  describe.only('Block', function() {
     let previousHash = null;
     let transactions = null;
     let block = null;

@@ -22,8 +22,13 @@ class Transaction {
    *     other properties, signed with the provided private key
    */
   constructor(privateKey, recipient, amount) {
+    // Use sha512
     // Enter your solution here
-
+    this.source = signing.getPublicKey(privateKey);
+    this.recipient = recipient;
+    this.amount = amount;
+    const combination = this.source + this.recipient + this.amount;
+    this.signature = signing.sign(privateKey, combination);
   }
 }
 
@@ -45,7 +50,12 @@ class Block {
    */
   constructor(transactions, previousHash) {
     // Your code here
-
+    this.transactions = transactions;
+    this.previousHash = previousHash;
+    this.nonce = 1029384757666;
+    // let hash516 = createHash('sha512');
+    // hash516.update(this.transactions + this.previousHash + this.nonce)
+    this.hash = this.calculateHash(this.nonce);
   }
 
   /**
@@ -59,7 +69,9 @@ class Block {
    */
   calculateHash(nonce) {
     // Your code here
-
+    const res =  createHash('sha512').update(this.transactions + this.previousHash + nonce).digest().toString('hex');
+    this.nonce = 0;
+    this.hash = res;
   }
 }
 
