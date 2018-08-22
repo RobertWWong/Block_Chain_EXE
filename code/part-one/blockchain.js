@@ -91,6 +91,8 @@ class Blockchain {
    */
   constructor() {
     // Your code here
+    const GenesisBlock = Block([], null);
+    this.blocks = [GenesisBlock];
 
   }
 
@@ -99,6 +101,7 @@ class Blockchain {
    */
   getHeadBlock() {
     // Your code here
+    return this.blocks[this.blocks.length - 1];
 
   }
 
@@ -108,6 +111,9 @@ class Blockchain {
    */
   addBlock(transactions) {
     // Your code here
+    const prevBlock = this.getHeadBlock();
+    const newBlock = Block(transactions, prevBlock.hash);
+    this.blocks.push(newBlock);
 
   }
 
@@ -122,6 +128,11 @@ class Blockchain {
    */
   getBalance(publicKey) {
     // Your code here
+    let balance = 0;
+    this.blocks.forEach(block => {
+        block.
+    });
+
 
   }
 }
